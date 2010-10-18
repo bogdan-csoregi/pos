@@ -15,7 +15,7 @@ import com.acme.apps.pos.PointOfSale;
  * @author Betfair
  *
  */
-public class AnotherPointOfSaleTest {
+public class PointOfSaleTest {
 	MockDisplay display;
 	PointOfSale pos;
 	BarCodeScanner barCodeScanner;
