@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.acme.apps.pos;
 
 
@@ -14,10 +11,6 @@ import org.junit.*;
 import com.acme.apps.pos.BarCodeScanner;
 import com.acme.apps.pos.PointOfSale;
 
-/**
- * @author Betfair
- *
- */
 public class PointOfSaleTest {
 	MockDisplay display;
 	PointOfSale pos;
@@ -33,9 +26,6 @@ public class PointOfSaleTest {
 	
 	private static final String code3 = "6789";
 
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@Before
 	public void setUp() throws Exception {
 		display = new MockDisplay();
@@ -45,9 +35,6 @@ public class PointOfSaleTest {
 		barCodeScanner = new BarCodeScanner(pos);
 	}
 
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@After
 	public void tearDown() throws Exception {
 		display.clearDisplay();
