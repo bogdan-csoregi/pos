@@ -6,6 +6,7 @@ package com.acme.apps.pos;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.*;
@@ -76,7 +77,11 @@ public class AnotherPointOfSaleTest {
 		barCodeScanner.scan(code1);
 		barCodeScanner.scan(code2);
 		List<String> result = display.getDisplayLines();
-		assertEquals("Not the expected price.", expectedPrice1, result.get(0));
-		assertEquals("Not the expected price.", expectedPrice2, result.get(1));
+		
+		List<String> expectedResult = new ArrayList<String>();
+		expectedResult.add(expectedPrice1);
+		expectedResult.add(expectedPrice2);
+		
+		assertEquals("Not the expected price.", expectedResult, result);
 	}
 }
