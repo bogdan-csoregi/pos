@@ -31,7 +31,7 @@ public class PointOfSale {
 		Product product = catalog.getProduct(code);
 		
 		if (product == null) {
-			display.write("Couldn't find a product to match the code:" + code);
+			display.printCodeNotFound(code);
 		} else {
 			Double fedTax = product.getPrice() * FED_TAX;
 			Double commercialTax = 0.0;

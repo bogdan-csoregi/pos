@@ -17,35 +17,31 @@ public class PointOfSaleTest {
 	Display display;
 	PointOfSale pos;
 	
-	private static final String code1 = "1234";
-	private static final double price1 = 100;
-	private static final double priceWiothTax1 = 113;
-	private static final String expectedPrice1 = "Price: $113.0";
+	private static final String CODE_1 = "1234";
+	private static final double PRICE_1 = 100;
+	private static final double PRICE_WITH_TAX_1 = 113;
 	
-	private static final String code2 = "4321";
-	private static final double price2 = 200;
-	private static final double priceWiothTax2 = 210;
-	private static final String expectedPrice2 = "Price: $210.0";
+	private static final String CODE_2 = "4321";
+	private static final double PRICE_2 = 200;
+	private static final double PRICE_WITH_TAX_2 = 210;
 	
-	private static final String code3 = "1111";
-	private static final double price3 = 400;
-	private static final double priceWiothTax3 = 420;
-	private static final String expectedPrice3 = "Price: $420.0";
+	private static final String CODE_3 = "1111";
+	private static final double PRICE_3 = 400;
+	private static final double PRICE_WITH_TAX_3 = 420;
 	
-	private static final String code4 = "2222";
-	private static final double price4 = 600;
-	private static final double priceWiothTax4 = 630;
-	private static final String expectedPrice4 = "Price: $630.0";
+	private static final String CODE_4 = "2222";
+	private static final double PRICE_4 = 600;
+	private static final double PRICE_WITH_TAX_4 = 630;
 	
-	private static final String code10 = "6789";
+	private static final String CODE_10 = "6789";
 
 	@Before
 	public void setUp() throws Exception {
 		Catalog catalog = new Catalog(new HashMap<String, Product>(){{
-			put(code1, new Product(price1, true));
-			put(code2, new Product(price2, false));
-			put(code3, new Product(price3, false));
-			put(code4, new Product(price4, false));
+			put(CODE_1, new Product(PRICE_1, true));
+			put(CODE_2, new Product(PRICE_2, false));
+			put(CODE_3, new Product(PRICE_3, false));
+			put(CODE_4, new Product(PRICE_4, false));
 		}});
 		//display = new MockDisplay();
 		display = mock(Display.class);
@@ -58,26 +54,25 @@ public class PointOfSaleTest {
 
 	@Test
 	public void testCode1() {
-		pos.scan(code1);
+		pos.scan(CODE_1);
 		
-		verify(display).printPrice(priceWiothTax1);
+		verify(display).printPrice(PRICE_WITH_TAX_1);
 	}
 	
-//	@Test
-//	public void testCode2() {
-//		pos.scan(code2);
-//		List<String> result = display.getDisplayLines();
-//		assertEquals("Not the expected price.", expectedPrice2, result.get(0));
-//	}
-//	
-//	@Test
-//	public void testUnknownCode() {
-//		pos.scan(code10);
-//		
-//		List<String> result = display.getDisplayLines();
-//		assertEquals("Not the expected message.", "Couldn't find a product to match the code:" + code10, result.get(0));
-//	}
-//	
+	@Test
+	public void testCode2() {
+		pos.scan(CODE_2);
+		
+		verify(display).printPrice(PRICE_WITH_TAX_2);
+	}
+	
+	@Test
+	public void testUnknownCode() {
+		pos.scan(CODE_10);
+		
+		verify(display).printCodeNotFound(CODE_10);
+	}
+	
 //	@Test
 //	public void testEmptyCode() {
 //		pos.scan("");
