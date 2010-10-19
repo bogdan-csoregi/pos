@@ -21,7 +21,7 @@ public class PointOfSale {
 
 	public void scan(String code) {
 		if ("".equals(code)) {
-			display.write("Empty code.");
+			display.printEmptyCodeMessage();
 		} else {
 			printProductForCode(code);
 		}

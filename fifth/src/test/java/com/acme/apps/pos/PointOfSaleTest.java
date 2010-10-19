@@ -73,14 +73,13 @@ public class PointOfSaleTest {
 		verify(display).printCodeNotFound(CODE_10);
 	}
 	
-//	@Test
-//	public void testEmptyCode() {
-//		pos.scan("");
-//		
-//		List<String> result = display.getDisplayLines();
-//		assertEquals("Not the expected message.", "Empty code.", result.get(0));
-//	}
-//	
+	@Test
+	public void testEmptyCode() {
+		pos.scan("");
+		
+		verify(display).printEmptyCodeMessage();
+	}
+	
 //	@Test
 //	public void testMultipleScans() {
 //		pos.scan(code1);
