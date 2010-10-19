@@ -80,11 +80,13 @@ public class PointOfSaleTest {
 		barCodeScanner.scan(code4);
 		List<String> result = display.getDisplayLines();
 		
-		List<String> expectedResult = new ArrayList<String>();
-		expectedResult.add(expectedPrice1);
-		expectedResult.add(expectedPrice2);
-		expectedResult.add(expectedPrice3);
-		expectedResult.add(expectedPrice4);
+		List<String> expectedResult = new ArrayList<String>(){{
+			add(expectedPrice1);
+			add(expectedPrice2);
+			add(expectedPrice3);
+			add(expectedPrice4);
+			}};
+		
 		
 		assertEquals("Not the expected price.", expectedResult, result);
 	}
