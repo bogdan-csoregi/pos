@@ -64,9 +64,12 @@ public class PointOfSaleTest {
 		assertEquals("Not the expected price.", expectedPrice2, result.get(0));
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testUnknownCode() {
 		barCodeScanner.scan(code10);
+		
+		List<String> result = display.getDisplayLines();
+		assertEquals("Not the expected message.", "Couldn't find a product to match ther code:" + code10, result.get(0));
 	}
 	
 	@Test

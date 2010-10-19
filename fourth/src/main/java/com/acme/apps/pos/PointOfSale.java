@@ -28,17 +28,17 @@ public class PointOfSale implements BarcodeEventHandler {
 		Product product = items.get(code);
 		
 		if (product == null) {
-			throw new IllegalArgumentException("Can't find the product for the provided code.");
+			display.write("Couldn't find a product to match ther code:" + code);
+		} else {
+			Double finalPrice = product.getPrice() * FED_TAX;
+			
+			if (product.isNeedsCommercialTax()) {
+				finalPrice = finalPrice + (product.getPrice() * COMERCIAL_TAX); 
+			}
+			
+			receip.addNewPrice(product.getPrice(), finalPrice);
+			display.write("Price: " + finalPrice);
 		}
-		
-		Double finalPrice = product.getPrice() * FED_TAX;
-		
-		if (product.isNeedsCommercialTax()) {
-			finalPrice = finalPrice + (product.getPrice() * COMERCIAL_TAX); 
-		}
-		
-		receip.addNewPrice(product.getPrice(), finalPrice);
-		display.write("Price: " + finalPrice);
 	}
 
 	public void payWithCash() {
